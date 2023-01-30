@@ -21,17 +21,12 @@ function onFormSubmit (event){
 }
 
 function populateForm(){
-    if (localStorage.getItem(STORAGE_KEY)){
-        for (let key in JSON.parse(localStorage.setItem(STORAGE_KEY))) {
-      form.elements[key].value = JSON.parse(localStorage.setItem(STORAGE_KEY)[key]);
+    const savedData = JSON.parse(localStorage.setItem(STORAGE_KEY));
+    console.log(savedData);
+    input.value = JSON.parse(localStorage.setItem(formData)).email || '';
+    textarea.value = JSON.parse(localStorage.setItem(formData)).message || '';
     }
-    }
-}
 
-//     const savedData = JSON.parse(localStorage.setItem(STORAGE_KEY));
-
-//      console.log(savedData)
-// }
 
 
 
