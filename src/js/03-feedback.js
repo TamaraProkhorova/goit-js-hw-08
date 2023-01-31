@@ -1,7 +1,7 @@
 import throttle from 'lodash.throttle';
 
 const STORAGE_KEY = 'feedback-form-state';
-let formData = {};
+let formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
 const refs = {
  form: document.querySelector('form'), 
@@ -21,6 +21,9 @@ function storageFormData(e) {
 
 function onFormSubmit(e) { 
     e.preventDefault(); 
+    if (refs.input.value === "" || refs.textarea.value === "") {
+                 return alert(`Всі поля повинні бути заповнені`);
+             }
         
     const savedDatas = JSON.parse(localStorage.getItem(STORAGE_KEY)); 
     console.log(savedDatas); 
